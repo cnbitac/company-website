@@ -475,6 +475,9 @@ export default function Site({ page, lang }: { page: PageKey; lang: "zh" | "en" 
             © {new Date().getFullYear()}{" "}
             {t("安徽交泰智能技术有限公司", "LinkedTi. All rights reserved.")}
           </span>
+          <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">
+            皖ICP备2023008887号-2
+          </a>
           <span>
             <MapPin size={14} />
             {t("安徽省合肥市高新区红宝石R栋", "Building R, Hongbaoshi, Hefei, Anhui, China")}
