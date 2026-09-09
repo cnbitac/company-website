@@ -1,0 +1,82 @@
+[
+  {
+    "industry": "钢铁",
+    "title": "提前发现辊道轴承损伤",
+    "body": "针对轧机辊道，交泰通过振动监测与故障分析，在设备尚无明显异常时识别轴承损伤。随后检修确认滚珠损伤，客户及时完成更换。系统作为既有 PLC 的功能补充，帮助运维团队及时发现问题、提前准备备件。",
+    "industryEn": "Steel",
+    "titleEn": "Detect bearing damage early",
+    "bodyEn": "Vibration monitoring and fault analysis identified bearing damage in a rolling mill roller table before obvious signs appeared. A later inspection confirmed damage to the bearing balls, and the customer replaced the bearing. The system complements the existing PLC and supports maintenance planning."
+  },
+  {
+    "industry": "数据中心",
+    "title": "关注冷却设备健康",
+    "body": "面向冷却系统中的水泵、风机等设备，通过持续监测和趋势分析，为机械异常排查提供线索。结合现场检查与维护后复测，帮助运维团队掌握设备健康变化，为维护安排提供依据。",
+    "industryEn": "Data centers",
+    "titleEn": "Understand cooling equipment health",
+    "bodyEn": "Monitor pumps and fans in cooling systems and analyze trends to guide mechanical fault investigation. Field checks and post-maintenance measurements support informed maintenance planning."
+  },
+  {
+    "industry": "半导体",
+    "title": "积累可追溯的运维经验",
+    "body": "面向晶圆厂关键厂务设备，将状态监测、故障诊断、现场复核与维护记录关联起来，形成可追溯的设备健康档案，为跨班次协作和后续故障排查提供参考。",
+    "industryEn": "Semiconductors",
+    "titleEn": "Build traceable maintenance knowledge",
+    "bodyEn": "Connect condition monitoring, diagnostics, field verification, and maintenance records for critical fab utility equipment. Traceable equipment histories support shift handovers and future investigations."
+  },
+  {
+    "industry": "化工",
+    "title": "让诊断支持检修决策",
+    "body": "面向泵机组等关键旋转设备，结合振动趋势、维护历史和现场检查，帮助运维团队缩小排查范围。通过维护后的状态对比验证处理效果，让检修决策有依据、处理过程可追溯。",
+    "industryEn": "Chemicals",
+    "titleEn": "Bring diagnostics into maintenance decisions",
+    "bodyEn": "Combine vibration trends, maintenance history, and field inspections to narrow investigations into critical rotating equipment. Compare conditions after maintenance to verify the outcome."
+  },
+  {
+    "industry": "机场",
+    "title": "让行李输送维护更有计划",
+    "body": "面向行李输送系统中的电机、减速机等设备，通过状态监测与故障分析，帮助运维团队及早发现劣化迹象。结合现场复核和运行安排，明确检查重点、提前准备备件，为输送系统连续运行提供支持。",
+    "industryEn": "Airports",
+    "titleEn": "Plan maintenance around baggage operations",
+    "bodyEn": "Monitor motors and gearboxes in baggage handling systems for emerging signs of deterioration. Use field verification and operating schedules to prioritize inspections and prepare spare parts."
+  },
+  {
+    "industry": "烟草",
+    "title": "让设备维护配合生产节奏",
+    "body": "面向烟草生产线中的传动设备和风机，通过振动监测、趋势跟踪与故障诊断，为异常排查提供依据。结合生产计划安排检查与维护，帮助团队提前准备备件，让设备维护更好地配合生产节奏。",
+    "industryEn": "Tobacco",
+    "titleEn": "Align maintenance with production schedules",
+    "bodyEn": "Vibration monitoring, trends, and diagnostics support investigations into drive equipment and fans on production lines. Plan inspections, maintenance, and spare parts around production needs."
+  },
+  {
+    "industry": "造船厂",
+    "title": "关注龙门吊关键传动设备",
+    "body": "面向龙门吊起升、行走机构中的电机和减速机，通过振动监测与趋势分析，结合启停和负载变化识别异常。配合现场复核，帮助运维团队明确检查重点、提前准备备件，并结合吊装作业计划安排维护。",
+    "industryEn": "Shipyards",
+    "titleEn": "Monitor gantry crane drive equipment",
+    "bodyEn": "Monitor motors and gearboxes in gantry crane hoisting and travel mechanisms. Analyze vibration alongside starts, stops, and load changes to focus inspections and schedule maintenance around lifting operations."
+  },
+  {
+    "industry": "铜冶炼",
+    "title": "关注连续运行的关键机组",
+    "body": "面向铜冶炼烟气处理、循环水等系统中的风机和泵组，持续监测振动与温度变化，识别设备劣化趋势。结合工况分析和现场复核，帮助运维团队缩小排查范围、提前准备备件，合理安排检修。",
+    "industryEn": "Copper smelting",
+    "titleEn": "Track critical continuously operating equipment",
+    "bodyEn": "Monitor vibration and temperature in fans and pumps supporting off-gas treatment and circulating water systems. Use operating context and field checks to investigate deterioration and plan maintenance."
+  },
+  {
+    "industry": "储能",
+    "title": "关注温控设备健康",
+    "body": "面向电化学储能系统的冷却循环泵、散热风机等温控设备，持续跟踪运行状态与变化趋势。结合故障分析和现场检查，为异常排查及维护安排提供依据，支持温控辅助设备稳定运行。",
+    "industryEn": "Energy storage",
+    "titleEn": "Monitor thermal management equipment",
+    "bodyEn": "Track cooling circulation pumps and fans in battery energy storage systems. Diagnostics and field inspections support maintenance planning for thermal management equipment."
+  },
+  {
+    "industry": "生物制药",
+    "title": "让关键设备维护有据可查",
+    "body": "面向制药用水、冷却与通风系统中的泵和风机，将状态监测、故障诊断与现场维护记录关联起来。帮助运维团队识别异常趋势、安排检查，并通过处理前后的状态对比，为维护效果验证和人员交接提供依据。",
+    "industryEn": "Biopharmaceuticals",
+    "titleEn": "Keep maintenance decisions traceable",
+    "bodyEn": "Connect monitoring, diagnostics, and maintenance records for pumps and fans in pharmaceutical water, cooling, and ventilation systems. Compare equipment conditions before and after maintenance to support verification and handovers."
+  }
+]
