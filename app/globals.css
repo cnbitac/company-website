@@ -606,6 +606,23 @@ h2 {
   padding: 8px 15px;
   color: #8291a7;
 }
+.customer-voice {
+  margin: 32px 0 0;
+  padding: clamp(28px, 5vw, 64px) clamp(20px, 5vw, 64px);
+  border-left: 3px solid #438fff;
+  background: linear-gradient(110deg, rgba(36, 108, 229, .13), transparent);
+}
+.customer-voice blockquote { margin: 0; }
+.customer-voice blockquote span,
+.customer-voice blockquote strong {
+  display: block;
+  font-size: clamp(24px, 3.2vw, 46px);
+  line-height: 1.55;
+  letter-spacing: -.025em;
+}
+.customer-voice blockquote span { color: #b9c8df; font-weight: 400; }
+.customer-voice blockquote strong { color: #8dbdff; font-weight: 600; }
+.customer-voice figcaption { margin-top: 20px; color: #99abc3; font-size: 14px; line-height: 1.6; }
 .case-feature {
   display: grid;
   grid-template-columns: 180px 1fr 30px;
