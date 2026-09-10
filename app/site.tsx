@@ -33,8 +33,9 @@ export function Mark() {
 export function Wordmark() {
   return (
     <span className="brand-type">
-      <span className="brand-chinese">交泰智能</span>
-      <small>LinkedTi</small>
+      <span className="sr-only">交泰智能 LinkedTi</span>
+      <span className="brand-chinese" aria-hidden="true">{Array.from("交泰智能").map((letter, i) => <span key={i}>{letter}</span>)}</span>
+      <small className="brand-english" aria-hidden="true">{Array.from("LinkedTi").map((letter, i) => <span key={i}>{letter}</span>)}</small>
     </span>
   );
 }
