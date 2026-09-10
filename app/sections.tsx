@@ -487,6 +487,28 @@ export default function Secondary({ page, en, href }: Props) {
           </div>
         </section>
         <BrandMeaning en={en} />
+        <section className="wrap identity-evolution" aria-labelledby="identity-evolution-title">
+          <p className="eyebrow">OUR EVOLVING IDENTITY</p>
+          <h2 id="identity-evolution-title">{t("标识焕新，交泰如一。", "A refreshed identity. The same LinkedTi.")}</h2>
+          <p className="identity-intro">{t(
+            "随着公司的发展，我们在原有 Logo 基础上进行了视觉升级，延续蓝色与圆形轮廓，优化图形和中英文名称的呈现，让标识更清晰、更便于识别。",
+            "As our company grows, we have refreshed our logo while retaining its blue color and circular outline. Refined graphics and a clearer bilingual wordmark make our identity easier to recognize.",
+          )}</p>
+          <div className="identity-comparison">
+            <figure>
+              <div className="identity-logo-surface"><Image unoptimized src="/brand/original.png" width={328} height={92} alt={t("交泰智能原版 Logo，曾用于早期产品及公司资料", "Original LinkedTi logo used in earlier company and product materials")} /></div>
+              <figcaption>{t("原版标识 · 历史资料中的交泰智能", "Original identity · Earlier LinkedTi materials")}</figcaption>
+            </figure>
+            <figure>
+              <div className="identity-logo-surface"><div className="brand"><Mark /><Wordmark /></div></div>
+              <figcaption>{t("新版标识 · 延续品牌，升级表达", "Refreshed identity · Continuing the same brand")}</figcaption>
+            </figure>
+          </div>
+          <p className="identity-continuity">{t(
+            "新旧 Logo 均代表安徽交泰智能技术有限公司（交泰智能 / LinkedTi），并非两家公司。此前发布的宣传册、产品资料及其他历史材料中的原版 Logo，同样属于交泰智能。这次变化是品牌视觉的迭代，不是公司主体的变更。",
+            "Both logos represent the same company: 安徽交泰智能技术有限公司, known as 交泰智能 / LinkedTi. The original logo in earlier brochures, product literature, and other historical materials remains part of our brand history. This is a visual identity update, not a change of company or legal entity.",
+          )}</p>
+        </section>
         <section className="section wrap">
           <div className="section-heading">
             <div>
