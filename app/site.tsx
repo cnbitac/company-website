@@ -230,15 +230,15 @@ export default function Site({ page, lang }: { page: PageKey; lang: "zh" | "en" 
                     "CONDITION MONITORING & PREDICTIVE MAINTENANCE",
                   )}
                 </div>
-                <h1>
-                  {t("让设备健康管理", "Equipment health.")}
+                <h1 className="brand-promise">
+                  {t("不是多一件事要管，", "Not one more thing to manage.")}
                   <br />
-                  <em>{t("融入工业自动化", "Built into automation.")}</em>
+                  <em>{t("而是少一件事要做。", "One less thing to do.")}</em>
                 </h1>
                 <p>
                   {t(
-                    "通过自研传感器、网关与软件，将设备状态和诊断报警接入 PLC/DCS。结合设备机理与 AI，把异常线索转化为可复核的维护依据。",
-                    "Bring equipment status and diagnostic alarms into PLC/DCS systems with our sensors, gateways, and software. Equipment physics and AI turn emerging fault signals into evidence your maintenance team can verify.",
+                    "让设备健康管理融入现有自动化系统。交泰智能结合设备机理与 AI，提前发现异常、辅助故障诊断，让运维少些反复排查，多些从容安排。",
+                    "Bring equipment health into your existing automation. LinkedTi combines equipment physics and AI to detect emerging problems and support fault diagnosis—so maintenance teams spend less time troubleshooting and more time planning ahead.",
                   )}
                 </p>
                 <div className="actions">
@@ -430,15 +430,6 @@ export default function Site({ page, lang }: { page: PageKey; lang: "zh" | "en" 
                 </div>
                 <ArrowUpRight className="case-arrow" />
               </a>
-              <figure className="customer-voice">
-                <blockquote>
-                  <span>{t("不是多一件事要管，", "Not one more thing to manage.")}</span>
-                  <strong>{t("而是少一件事要做。", "One less thing to do.")}</strong>
-                </blockquote>
-                <figcaption>
-                  {t("钢厂运维客户反馈 · 根据交流大意整理", "Steel plant maintenance feedback · Paraphrased and translated")}
-                </figcaption>
-              </figure>
             </section>
           </>
         ) : (
@@ -467,7 +458,7 @@ export default function Site({ page, lang }: { page: PageKey; lang: "zh" | "en" 
             <Mark />
             <Wordmark />
           </a>
-          <p>{t("连接设备，积累智能。", "Connected equipment. Accumulated intelligence.")}</p>
+          <p>{t("不是多一件事要管，而是少一件事要做。", "Not one more thing to manage. One less thing to do.")}</p>
           <div>
             <a href="mailto:sales@linkedti.com">
               <Mail size={16} />
