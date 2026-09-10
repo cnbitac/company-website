@@ -611,6 +611,18 @@ h2 {
   line-height: 1.5;
   letter-spacing: -.035em;
 }
+.identity-evolution { padding-top: 60px; padding-bottom: 60px; }
+.identity-evolution h2 { font-size: clamp(28px, 3vw, 42px); line-height: 1.4; margin: 16px 0; }
+.identity-intro, .identity-continuity { max-width: 900px; color: #b9c8df; font-size: 16px; line-height: 1.9; }
+.identity-comparison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin: 32px 0; }
+.identity-comparison figure { margin: 0; min-width: 0; }
+.identity-logo-surface { min-height: 180px; padding: 28px; display: flex; align-items: center; justify-content: center; background: #eff5ff; border-radius: 12px; }
+.identity-logo-surface img { width: 328px; max-width: 100%; height: auto; }
+.identity-logo-surface .brand { color: #0755ba; }
+.identity-logo-surface .brand small { color: #0755ba; }
+.identity-comparison figcaption { color: #aebfd7; font-size: 14px; line-height: 1.6; margin-top: 14px; }
+.identity-continuity { border-left: 3px solid #438fff; padding-left: 20px; }
+@media (max-width: 640px) { .identity-comparison { grid-template-columns: 1fr; } }
 .case-feature {
   display: grid;
   grid-template-columns: 180px 1fr 30px;
