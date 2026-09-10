@@ -430,6 +430,15 @@ export default function Site({ page, lang }: { page: PageKey; lang: "zh" | "en" 
                 </div>
                 <ArrowUpRight className="case-arrow" />
               </a>
+              <figure className="customer-voice">
+                <blockquote>
+                  <span>{t("不是多一件事要管，", "Not one more thing to manage.")}</span>
+                  <strong>{t("而是少一件事要做。", "One less thing to do.")}</strong>
+                </blockquote>
+                <figcaption>
+                  {t("钢厂运维客户反馈 · 根据交流大意整理", "Steel plant maintenance feedback · Paraphrased and translated")}
+                </figcaption>
+              </figure>
             </section>
           </>
         ) : (
