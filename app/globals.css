@@ -119,6 +119,10 @@ button {
   color: var(--accent);
 }
 .brand-type {
+  display: inline-flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 4.24em;
   font-weight: 650;
   font-size: 28px;
   letter-spacing: -1.2px;
@@ -1929,7 +1933,9 @@ footer {
   line-height: 1.12;
 }
 .brand-type .brand-chinese {
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  letter-spacing: 0;
   color: inherit;
   font-weight: 650;
 }
@@ -1938,6 +1944,12 @@ footer {
   letter-spacing: 1.6px;
   margin-top: 7px;
   color: #adbfdf;
+}
+.brand-type small.brand-english {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  letter-spacing: 0;
 }
 .brand-statement > .brand-type,
 .brand-specimen > .brand-type {
