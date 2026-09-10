@@ -47,16 +47,25 @@ const pages = {
 } as const;
 
 export type MetadataPage = keyof typeof pages;
-export function metadataFor(page: MetadataPage, lang: "zh" | "en"): Metadata {
+const japanesePages = {
+  home: ["産業設備の状態監視・故障診断・予知保全", "管理する手間を増やさず、現場の仕事をひとつ減らす。LinkedTi は設備状態監視、故障診断、PLC／DCS 連携で計画的な保全を支援します。"],
+  products: ["製品・技術", "Aura センサー、Conflux ゲートウェイ、Euda 診断ソフトウェア、設備保全 AI Agent。既存設備と保全業務に合わせた構成をご提案します。"],
+  applications: ["活用分野・導入事例", "鉄鋼のローラーテーブル導入事例と、データセンター、半導体、化学、空港、造船などにおける設備監視の活用をご紹介します。"],
+  about: ["会社紹介", "安徽交泰智能技术有限公司（交泰智能 / LinkedTi）の事業、社名の由来、技術開発、ロゴの歩みをご紹介します。"],
+  contact: ["お問い合わせ", "設備監視・故障診断・予知保全に関するお問い合わせ。sales@linkedti.com、電話 +86 139 5141 9340。"],
+  brand: ["ブランド紹介", "交泰智能 / LinkedTi のブランドに込めた思い。"],
+} as const;
+export function metadataFor(page: MetadataPage, lang: "zh" | "en" | "ja"): Metadata {
   const en = lang === "en";
   const record = pages[page];
   const zhPath = page === "home" ? "/" : "/" + page;
   const enPath = page === "home" ? "/en" : "/en/" + page;
+  const jaPath = page === "home" ? "/ja" : "/ja/" + page;
   const publicPage = page !== "brand";
   return {
     metadataBase: new URL(sitePublication.origin),
-    title: `${record[en ? 1 : 0]} | ${en ? "LinkedTi" : "交泰智能 LinkedTi"}`,
-    description: record[en ? 3 : 2],
+    title: `${lang === "ja" ? japanesePages[page][0] : record[en ? 1 : 0]} | ${lang === "zh" ? "交泰智能 LinkedTi" : "LinkedTi"}`,
+    description: lang === "ja" ? japanesePages[page][1] : record[en ? 3 : 2],
     robots: {
       index: sitePublication.allowIndexing && publicPage,
       follow: sitePublication.allowIndexing && publicPage,
@@ -64,8 +73,8 @@ export function metadataFor(page: MetadataPage, lang: "zh" | "en"): Metadata {
     ...(publicPage
       ? {
           alternates: {
-            canonical: en ? enPath : zhPath,
-            languages: { "zh-CN": zhPath, en: enPath, "x-default": zhPath },
+            canonical: lang === "ja" ? jaPath : en ? enPath : zhPath,
+            languages: { "zh-CN": zhPath, en: enPath, ja: jaPath, "x-default": zhPath },
           },
         }
       : { alternates: null }),
