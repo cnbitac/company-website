@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 
-// Keep the review release out of search results. Set the official origin and
-// enable indexing together when the public domain is ready to launch.
+// Official publication metadata; deploy with the verified HTTPS domain.
 export const sitePublication = {
-  origin: "https://linkedti-industrial.weichen-zhao.chatgpt.site",
-  allowIndexing: false,
+  origin: "https://www.linkedti.com",
+  allowIndexing: true,
 };
 
 const pages = {
