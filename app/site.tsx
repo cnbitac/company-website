@@ -1,6 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import JapaneseSite from "./japanese";
+import Assessment from "./assessment";
 import Image from "next/image";
 import Secondary from "./sections";
 import brandDesign from "./brand-design.json";
@@ -168,6 +169,7 @@ function FlowVisual({ en }: { en: boolean }) {
 }
 
 export default function Site({ page, lang }: { page: PageKey; lang: "zh" | "en" | "ja" }) {
+  if (page === "contact") return <Assessment lang={lang} />;
   return lang === "ja" ? <JapaneseSite page={page} /> : <BilingualSite page={page} lang={lang} />;
 }
 function BilingualSite({ page, lang }: { page: PageKey; lang: "zh" | "en" }) {

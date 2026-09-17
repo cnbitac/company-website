@@ -32,10 +32,10 @@ const pages = {
     "Meet LinkedTi, a specialist in industrial equipment health and predictive maintenance. Discover our brand story, engineering capabilities, and automation integration.",
   ],
   contact: [
-    "技术交流",
-    "Contact Our Team",
-    "联系交泰智能讨论设备监测、故障诊断与 PLC/DCS 接入需求。电话 13951419340，邮箱 sales@linkedti.com。",
-    "Discuss condition monitoring, fault diagnostics, and PLC/DCS integration with LinkedTi. Call +86 139 5141 9340 or email sales@linkedti.com.",
+    "预测性维护应用评估",
+    "Predictive Maintenance Readiness Assessment",
+    "通过12道选择题，评估设备价值、停机影响、数据基础与团队能力。获取推进建议，留下一个联系方式即可与交泰智能交流。",
+    "Answer 12 questions about equipment value, downtime impact, data and team readiness. See suggested next steps and leave one contact method for LinkedTi to follow up.",
   ],
   brand: [
     "品牌设计预览",
@@ -51,7 +51,7 @@ const japanesePages = {
   products: ["製品・技術", "Aura センサー、Conflux ゲートウェイ、Euda 診断ソフトウェア、設備保全 AI Agent。既存設備と保全業務に合わせた構成をご提案します。"],
   applications: ["活用分野・導入事例", "鉄鋼のローラーテーブル導入事例と、データセンター、半導体、化学、空港、造船などにおける設備監視の活用をご紹介します。"],
   about: ["会社紹介", "安徽交泰智能技术有限公司（交泰智能 / LinkedTi）の事業、社名の由来、技術開発、ロゴの歩みをご紹介します。"],
-  contact: ["お問い合わせ", "設備監視・故障診断・予知保全に関するお問い合わせ。sales@linkedti.com、電話 +86 139 5141 9340。"],
+  contact: ["予知保全の導入適合性評価", "12問の選択式で設備価値・停止影響・データ基盤・チーム体制を評価します。結果を確認し、連絡先を1つ残すだけで相談できます。"],
   brand: ["ブランド紹介", "交泰智能 / LinkedTi のブランドに込めた思い。"],
 } as const;
 export function metadataFor(page: MetadataPage, lang: "zh" | "en" | "ja"): Metadata {
