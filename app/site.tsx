@@ -1,5 +1,7 @@
 "use client";
 import { useEffect } from "react";
+import JapaneseSite from "./japanese";
+import Assessment from "./assessment";
 import Image from "next/image";
 import Secondary from "./sections";
 import brandDesign from "./brand-design.json";
@@ -166,7 +168,11 @@ function FlowVisual({ en }: { en: boolean }) {
   );
 }
 
-export default function Site({ page, lang }: { page: PageKey; lang: "zh" | "en" }) {
+export default function Site({ page, lang }: { page: PageKey; lang: "zh" | "en" | "ja" }) {
+  if (page === "contact") return <Assessment lang={lang} />;
+  return lang === "ja" ? <JapaneseSite page={page} /> : <BilingualSite page={page} lang={lang} />;
+}
+function BilingualSite({ page, lang }: { page: PageKey; lang: "zh" | "en" }) {
   const en = lang === "en";
   const t = (zh: string, english: string) => (en ? english : zh);
   const href = (p = "") => `${en ? "/en" : ""}/${p}`.replace(/\/$/, "") || "/";
@@ -197,6 +203,7 @@ export default function Site({ page, lang }: { page: PageKey; lang: "zh" | "en" 
             ))}
           </nav>
           <div className="header-actions">
+            <a className="language" href={`/ja${page === "home" ? "" : `/${page === "brand" ? "about" : page}`}`} lang="ja">日本語</a>
             <a
               className="language"
               href={`${en ? "" : "/en"}${page === "home" ? "" : `/${page}`}` || "/"}

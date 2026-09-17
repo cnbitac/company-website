@@ -38,3 +38,6 @@ next-env.d.ts
 /outputs/
 /work/
 *.tsbuildinfo
+/demo-build/
+/server/__pycache__/
+*.sqlite3*
