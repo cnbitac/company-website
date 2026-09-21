@@ -1,4 +1,5 @@
 'use client';
+import LanguageSwitcher from './languages';
 import { useEffect, useState, type SubmitEvent } from 'react';
 import Image from 'next/image';
 import {
@@ -439,7 +440,7 @@ function About() {
 }
 export default function JapaneseSite({ page }: { page: PageKey }) {
   useEffect(() => {
-    document.documentElement.lang = 'ja';
+    document.documentElement.lang = 'ja'; document.documentElement.dir = 'ltr';
   }, []);
   const path = page === 'home' ? '' : '/' + page;
   return (
@@ -465,12 +466,7 @@ export default function JapaneseSite({ page }: { page: PageKey }) {
             ))}
           </nav>
           <div className="header-actions">
-            <a className="language" href={path || '/'} lang="zh-CN">
-              中文
-            </a>
-            <a className="language" href={'/en' + path} lang="en">
-              EN
-            </a>
+            <LanguageSwitcher lang="ja" page={page}/>
             <a className="header-cta" href={href('contact')}>
               お問い合わせ
               <ArrowUpRight size={17} />

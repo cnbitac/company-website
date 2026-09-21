@@ -43,6 +43,18 @@ class LeadTests(unittest.TestCase):
             leads.deliver_once()
             self.assertEqual(client.send_message.call_count, 1)
 
+    def test_new_languages_preserve_language_and_scoring(self):
+        for language in ('de', 'ar'):
+            with self.subTest(language=language):
+                payload = {**self.payload, 'language': language, 'requestId': 'language-test-request-' + language}
+                lead_id, duplicate = leads.save(payload, 'language-test')
+                self.assertFalse(duplicate)
+                with leads.connect() as db:
+                    row = db.execute('SELECT * FROM leads WHERE id=?', (lead_id,)).fetchone()
+                    self.assertEqual(row['language'], language)
+                    self.assertEqual(json.loads(row['result'])['id'], 'immediate')
+                    self.assertEqual(row['mail_status'], 'pending')
+
     def test_partial_delivery_retries_only_failed_recipient(self):
         leads.save(self.payload, 'test')
         cfg = {'host': 'localhost', 'user': 'sender@example.invalid', 'password': 'test', 'to': ['sales@example.invalid'], 'cc': ['cc@example.invalid']}

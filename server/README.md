@@ -2,6 +2,8 @@
 
 Python 3.12 standard library service, bound only to 127.0.0.1:8766 behind Nginx. SQLite stores submissions and a durable email outbox outside the public website directory. Contact information and credentials are never part of the repository or static site output.
 
+The intake supports Chinese (`zh`), English (`en`), Japanese (`ja`), German (`de`) and Arabic (`ar`). The selected language is saved with the lead. All languages use the same WAIC questions, CNY thresholds and scoring rules. Adding languages does not require a database migration or a change to notification recipients.
+
 ## Operations
 
 - `POST /api/leads`: validates 12 answers, explicit consent, contact and language; recomputes the WAIC result on the server. An idempotency key prevents duplicate records on retry. Reusing a key with changed content is rejected.

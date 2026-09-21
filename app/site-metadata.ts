@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import {internationalContent} from './international-content';
+import {languagePath,type SiteLang} from './language-path';
 
 // Official publication metadata; deploy with the verified HTTPS domain.
 export const sitePublication = {
@@ -54,7 +56,10 @@ const japanesePages = {
   contact: ["予知保全の導入適合性評価", "12問の選択式で設備価値・停止影響・データ基盤・チーム体制を評価します。結果を確認し、連絡先を1つ残すだけで相談できます。"],
   brand: ["ブランド紹介", "交泰智能 / LinkedTi のブランドに込めた思い。"],
 } as const;
-export function metadataFor(page: MetadataPage, lang: "zh" | "en" | "ja"): Metadata {
+export function metadataFor(page: MetadataPage, lang: SiteLang): Metadata {
+  const intl = lang === 'de' || lang === 'ar' ? internationalContent[lang] : null;
+  const intlTitle = intl ? ({home:intl.eyebrow,products:intl.nav[0],applications:intl.nav[1],about:intl.nav[2],contact:intl.talk,brand:intl.nav[2]})[page] : '';
+  const intlDescription = intl ? ({home:intl.intro,products:intl.productsIntro,applications:intl.applicationsIntro,about:intl.aboutIntro,contact:intl.contactText,brand:intl.identityText})[page] : '';
   const en = lang === "en";
   const record = pages[page];
   const zhPath = page === "home" ? "/" : "/" + page;
@@ -63,8 +68,8 @@ export function metadataFor(page: MetadataPage, lang: "zh" | "en" | "ja"): Metad
   const publicPage = page !== "brand";
   return {
     metadataBase: new URL(sitePublication.origin),
-    title: `${lang === "ja" ? japanesePages[page][0] : record[en ? 1 : 0]} | ${lang === "zh" ? "交泰智能 LinkedTi" : "LinkedTi"}`,
-    description: lang === "ja" ? japanesePages[page][1] : record[en ? 3 : 2],
+    title: `${intl ? intlTitle : lang === "ja" ? japanesePages[page][0] : record[en ? 1 : 0]} | ${lang === "zh" ? "交泰智能 LinkedTi" : "LinkedTi"}`,
+    description: intl ? intlDescription : lang === "ja" ? japanesePages[page][1] : record[en ? 3 : 2],
     robots: {
       index: sitePublication.allowIndexing && publicPage,
       follow: sitePublication.allowIndexing && publicPage,
@@ -72,8 +77,8 @@ export function metadataFor(page: MetadataPage, lang: "zh" | "en" | "ja"): Metad
     ...(publicPage
       ? {
           alternates: {
-            canonical: lang === "ja" ? jaPath : en ? enPath : zhPath,
-            languages: { "zh-CN": zhPath, en: enPath, ja: jaPath, "x-default": zhPath },
+            canonical: languagePath(lang,page),
+            languages: { "zh-CN": zhPath, en: enPath, ja: jaPath, de:languagePath('de',page), ar:languagePath('ar',page), "x-default": zhPath },
           },
         }
       : { alternates: null }),

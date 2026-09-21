@@ -1,6 +1,8 @@
-export type AssessmentLang = 'zh' | 'en' | 'ja';
+import {internationalQuestions,internationalResults} from './assessment-international';
+export type AssessmentLang = 'zh' | 'en' | 'ja' | 'de' | 'ar';
 // Options keep the source order (2, 1, 0); monetary thresholds remain CNY in every language.
-export const questionTranslations: Record<'en' | 'ja', string[][]> = {
+export const questionTranslations: Record<'en' | 'ja' | 'de' | 'ar', string[][]> = {
+ ...internationalQuestions,
  en: [
  ['What is the purchase or replacement cost of your most critical equipment?','Consider one core machine or one irreplaceable group of machines. Amounts are in CNY.','Over CNY 500,000, or imported/custom equipment','CNY 100,000–500,000','Below CNY 100,000 and easy to replace'],
  ['Is it a production bottleneck or an essential process?','Consider the effect on upstream and downstream operations.','Yes, its failure holds up the whole line','Partly critical, with limited alternatives','No, sufficient redundancy is available'],
@@ -30,7 +32,8 @@ export const questionTranslations: Record<'en' | 'ja', string[][]> = {
  ['警報が出た後、生産・調達・管理部門は連携できますか？','保全時間の確保、部品手配、対応責任を考えてください。','はい。部門間の連携が円滑','多少の課題はあるが、管理層の支援がある','難しい。予兆に基づく停止への協力が得にくい'],
  ]
 };
-export const resultTranslations: Record<'en' | 'ja', Record<string, [string,string]>> = {
+export const resultTranslations: Record<'en' | 'ja' | 'de' | 'ar', Record<string, [string,string]>> = {
+ ...internationalResults,
  en:{
  immediate:['Prioritize a focused pilot','Start with one or two critical machines. Agree on data access and acceptance criteria, then verify the alert, inspection and maintenance workflow.'],
  pilot:['Start with a small pilot','Choose one critical machine, address data or coordination gaps, and validate with operating and maintenance feedback before expanding.'],

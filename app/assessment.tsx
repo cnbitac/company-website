@@ -8,9 +8,12 @@ import {Button} from '../components/ui/button';
 import {questions,evaluate} from './assessment-model.mjs';
 import {questionTranslations,resultTranslations,type AssessmentLang} from './assessment-translations';
 import './assessment.css';
+import './international.css';
+import {assessmentInternational} from './assessment-international';
+import LanguageSwitcher from './languages';
 
 export default function Assessment({lang}:{lang:AssessmentLang}){
- const t=(zh:string,en:string,ja:string)=>lang==='zh'?zh:lang==='en'?en:ja;
+ const t=(zh:string,en:string,ja:string)=>lang==='zh'?zh:lang==='en'?en:lang==='ja'?ja:assessmentInternational[en][lang==='de'?0:1];
  const [answers,setAnswers]=useState<Record<string,string>>({});
  const [step,setStep]=useState(0);
  const [kind,setKind]=useState(lang==='zh'?'wechat':'email');
@@ -22,7 +25,7 @@ export default function Assessment({lang}:{lang:AssessmentLang}){
  const [trap,setTrap]=useState('');
  const requestId=useRef('');
  const heading=useRef<HTMLHeadingElement>(null);
- useEffect(()=>{document.documentElement.lang=lang==='zh'?'zh-CN':lang;},[lang]);
+ useEffect(()=>{document.documentElement.lang=lang==='zh'?'zh-CN':lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';},[lang]);
  useEffect(()=>{heading.current?.focus();window.scrollTo({top:0,behavior:'instant'});},[step]);
  const result=evaluate(answers);
  const translated=lang==='zh'?null:resultTranslations[lang][result.id];
@@ -49,8 +52,8 @@ export default function Assessment({lang}:{lang:AssessmentLang}){
   }catch(err){setError(err instanceof Error&&err.message==='limit'?t('提交较频繁，请稍后再试，或直接电话联系我们。','Too many submissions. Please try later or call us.','送信回数が多いため、時間を置くかお電話でご連絡ください。'):t('暂未确认提交成功，你的选择仍保留在此页面。请重试或电话联系，重复重试不会新增同一条线索。','Submission could not be confirmed. Your answers are still here. Retry or call us; retrying will not create a duplicate.','送信結果を確認できません。回答はこの画面に残っています。再試行しても同じ問い合わせは重複登録されません。'));}
   finally{clearTimeout(timer);setBusy(false);}
  }
- return <div className="qa-shell" lang={lang==='zh'?'zh-CN':lang}>
- <header className="qa-header"><a href={home} className="brand"><Mark/><Wordmark/></a><nav className="qa-language" aria-label="Language">{(['zh','en','ja'] as const).map(l=><a key={l} lang={l} aria-current={lang===l?'page':undefined} href={l==='zh'?'/contact':`/${l}/contact`}>{l==='zh'?'中文':l==='en'?'EN':'日本語'}</a>)}</nav><a href={home} className="qa-back"><ArrowLeft size={16}/>{t('返回官网','Back to site','サイトに戻る')}</a></header>
+ return <div className="qa-shell" dir={lang==='ar'?'rtl':'ltr'} lang={lang==='zh'?'zh-CN':lang}>
+ <header className="qa-header"><a href={home} className="brand"><Mark/><Wordmark/></a><LanguageSwitcher lang={lang} page="contact"/><a href={home} className="qa-back"><ArrowLeft size={16}/>{t('返回官网','Back to site','サイトに戻る')}</a></header>
  <main className="qa-layout"><aside className="qa-intro"><p className="eyebrow">LINKEDTI / APPLICATION CHECK</p><h1>{t('你的设备，从哪里开始？','Where should your equipment journey start?','あなたの設備、どこから始めますか？')}</h1><p>{t('不是多一件事要管，而是少一件事要做。','Not one more thing to manage. One less thing to do.','管理する手間を増やさず、現場の仕事をひとつ減らす。')}</p><div className="qa-facts"><span>{t('12 道选择题','12 selections','12問の選択式')}</span><span>{t('无需撰写需求','No long forms','長文入力不要')}</span><span>{t('先看结果，再联系','Results before contact','結果を見てから連絡')}</span></div><ol className="qa-steps">{steps.map((s,i)=><li key={s} className={i===step?'current':i<step?'done':''} aria-current={i===step?'step':undefined}><span>{i<step?<Check size={16}/>:String(i+1).padStart(2,'0')}</span>{s}</li>)}</ol><p className="qa-aside-note">{t('这是项目落地适用性自评，不是设备健康或故障风险诊断。','This checks project suitability, not equipment health or failure risk.','導入適合性の自己評価であり、設備の健全性や故障リスクの診断ではありません。')}</p></aside>
  <section className="qa-surface">{step<4?<><div className="qa-topline"><span>{t('应用评估','Application assessment','導入適合性評価')}</span><span>{Object.keys(answers).length} / 12</span></div><progress value={Object.keys(answers).length} max={12} aria-label={t('答题进度','Progress','回答状況')}/><h2 ref={heading} tabIndex={-1}>{steps[step]}</h2><p className="qa-muted">{t('请围绕同一台或同一组关键设备作答。金额以人民币计；不清楚可直接选择“暂不清楚”。','Answer for the same machine or group throughout. All amounts are in CNY. Select “Not sure” where needed.','同じ設備または設備群を対象に回答してください。金額は人民元です。不明な場合は「不明」を選べます。')}</p>
  <form onSubmit={e=>{e.preventDefault();setStep(s=>s+1);setError('');}}><div className="qa-questions">{questions.slice(step*3,step*3+3).map((q,i)=>{const index=step*3+i;const tr=lang==='zh'?null:questionTranslations[lang][index];return <div className="qa-question" key={q.id}><label htmlFor={q.id}><span>{String(index+1).padStart(2,'0')}</span>{tr?.[0]??q.title}</label><p id={q.id+'-hint'}>{tr?.[1]??q.hint}</p><NativeSelect id={q.id} value={answers[q.id]??''} required onChange={e=>{changed();setAnswers(a=>({...a,[q.id]:e.target.value}));}} aria-describedby={q.id+'-hint'}><NativeSelectOption value="" disabled>{t('请选择','Select an option','選択してください')}</NativeSelectOption>{q.options.map((o,j)=><NativeSelectOption value={o.value} key={o.value}>{o.value==='unknown'?t('暂不清楚','Not sure','不明'):tr?.[j+2]??o.label}</NativeSelectOption>)}</NativeSelect></div>;})}</div><div className="qa-controls"><button type="button" disabled={step===0} className="qa-back" onClick={()=>setStep(s=>s-1)}><ArrowLeft size={16}/>{t('上一步','Back','戻る')}</button><Button type="submit" className="button primary">{step===3?t('查看我的评估','See my results','評価結果を見る'):t('下一步','Next','次へ')}<ArrowRight size={16}/></Button></div></form></>:<>

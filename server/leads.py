@@ -96,7 +96,7 @@ def validate(data):
         valid = False
     if not valid:
         raise ValueError('invalid_contact')
-    if data.get('language') not in ('zh', 'en', 'ja') or not re.fullmatch(r'[a-zA-Z0-9-]{16,80}', str(data.get('requestId', ''))):
+    if data.get('language') not in ('zh', 'en', 'ja', 'de', 'ar') or not re.fullmatch(r'[a-zA-Z0-9-]{16,80}', str(data.get('requestId', ''))):
         raise ValueError('invalid_request')
     return {'answers': answers, 'contactKind': kind, 'contact': contact, 'language': data['language'], 'source': 'website/contact', 'consentVersion': '2026-09-17'}
 

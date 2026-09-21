@@ -2,6 +2,8 @@
 import { useEffect } from "react";
 import JapaneseSite from "./japanese";
 import Assessment from "./assessment";
+import InternationalSite from "./international";
+import LanguageSwitcher, {type SiteLang} from "./languages";
 import Image from "next/image";
 import Secondary from "./sections";
 import brandDesign from "./brand-design.json";
@@ -168,8 +170,9 @@ function FlowVisual({ en }: { en: boolean }) {
   );
 }
 
-export default function Site({ page, lang }: { page: PageKey; lang: "zh" | "en" | "ja" }) {
+export default function Site({ page, lang }: { page: PageKey; lang: SiteLang }) {
   if (page === "contact") return <Assessment lang={lang} />;
+  if (lang === "de" || lang === "ar") return <InternationalSite page={page} lang={lang}/>;
   return lang === "ja" ? <JapaneseSite page={page} /> : <BilingualSite page={page} lang={lang} />;
 }
 function BilingualSite({ page, lang }: { page: PageKey; lang: "zh" | "en" }) {
@@ -177,6 +180,7 @@ function BilingualSite({ page, lang }: { page: PageKey; lang: "zh" | "en" }) {
   const t = (zh: string, english: string) => (en ? english : zh);
   const href = (p = "") => `${en ? "/en" : ""}/${p}`.replace(/\/$/, "") || "/";
   useEffect(() => {
+    document.documentElement.dir = "ltr";
     document.documentElement.lang = en ? "en" : "zh-CN";
   }, [en]);
   const nav = [
@@ -203,15 +207,7 @@ function BilingualSite({ page, lang }: { page: PageKey; lang: "zh" | "en" }) {
             ))}
           </nav>
           <div className="header-actions">
-            <a className="language" href={`/ja${page === "home" ? "" : `/${page === "brand" ? "about" : page}`}`} lang="ja">日本語</a>
-            <a
-              className="language"
-              href={`${en ? "" : "/en"}${page === "home" ? "" : `/${page}`}` || "/"}
-              lang={en ? "zh-CN" : "en"}
-            >
-              {en ? "中文" : "EN"}
-              <span>↗</span>
-            </a>
+            <LanguageSwitcher lang={lang} page={page}/>
             <a className="header-cta" href={href("contact")}>
               {t("技术交流", "Let’s talk")}
               <ArrowUpRight size={17} />
