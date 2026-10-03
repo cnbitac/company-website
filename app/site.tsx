@@ -6,6 +6,7 @@ import InternationalSite from "./international";
 import LanguageSwitcher, {type SiteLang} from "./languages";
 import Image from "next/image";
 import Secondary from "./sections";
+import RuleKnowledge from "./rule-knowledge";
 import brandDesign from "./brand-design.json";
 import {
   ArrowUpRight,
@@ -305,6 +306,7 @@ function BilingualSite({ page, lang }: { page: PageKey; lang: "zh" | "en" }) {
                 ))}
               </div>
             </section>
+            <RuleKnowledge lang={en ? "en" : "zh"} />
             <section className="integration-section wrap">
               <div className="section-heading">
                 <div>

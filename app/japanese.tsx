@@ -1,4 +1,5 @@
 'use client';
+import RuleKnowledge, { RulesWorkflow } from "./rule-knowledge";
 import LanguageSwitcher from './languages';
 import { useEffect, useState, type SubmitEvent } from 'react';
 import Image from 'next/image';
@@ -542,6 +543,7 @@ export default function JapaneseSite({ page }: { page: PageKey }) {
               </div>
               <ProductCards />
             </section>
+            <RuleKnowledge lang="ja" />
             <Integration />
             <section className="software-section">
               <div className="wrap software-layout">
@@ -629,7 +631,9 @@ export default function JapaneseSite({ page }: { page: PageKey }) {
                 </article>
               ))}
             </section>
+            <RuleKnowledge lang="ja" view="details" />
             <Integration />
+            <RulesWorkflow lang="ja" />
           </>
         )}
         {page === 'applications' && (
@@ -664,9 +668,10 @@ export default function JapaneseSite({ page }: { page: PageKey }) {
                 </article>
               ))}
             </div>
+            <RuleKnowledge lang="ja" view="example" />
           </>
         )}
-        {(page === 'about' || page === 'brand') && <About />}
+        {(page === 'about' || page === 'brand') && <><About /><RuleKnowledge lang="ja" view="about" /></>}
         {page === 'contact' && (
           <>
             <Intro

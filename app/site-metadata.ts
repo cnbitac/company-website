@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import {internationalContent} from './international-content';
+import {ruleContent} from './rule-content';
 import {languagePath,type SiteLang} from './language-path';
 
 // Official publication metadata; deploy with the verified HTTPS domain.
@@ -69,7 +70,7 @@ export function metadataFor(page: MetadataPage, lang: SiteLang): Metadata {
   return {
     metadataBase: new URL(sitePublication.origin),
     title: `${intl ? intlTitle : lang === "ja" ? japanesePages[page][0] : record[en ? 1 : 0]} | ${lang === "zh" ? "交泰智能 LinkedTi" : "LinkedTi"}`,
-    description: intl ? intlDescription : lang === "ja" ? japanesePages[page][1] : record[en ? 3 : 2],
+    description: page === "products" ? ruleContent[lang].intro : intl ? intlDescription : lang === "ja" ? japanesePages[page][1] : record[en ? 3 : 2],
     robots: {
       index: sitePublication.allowIndexing && publicPage,
       follow: sitePublication.allowIndexing && publicPage,

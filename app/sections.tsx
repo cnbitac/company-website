@@ -24,6 +24,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mark, Wordmark, productData, type PageKey } from "./site";
 import industries from "./industry-data.json";
+import RuleKnowledge, { RulesWorkflow } from "./rule-knowledge";
 import Image from "next/image";
 const icons = [
   Factory,
@@ -359,28 +360,10 @@ export default function Secondary({ page, en, href }: Props) {
               {t("软件操作手册界面示例", "Interface example from the software user manual")}
             </figcaption>
           </figure>
-          <section className="workflow-section">
-            <p className="eyebrow">CONNECT DATA TO ACTION</p>
-            <h2>{t("让处理结果回到下一次判断。", "Let each outcome inform the next decision.")}</h2>
-            <div className="workflow-steps">
-              {[
-                ["采集", "Sense"],
-                ["诊断", "Diagnose"],
-                ["预警", "Alert"],
-                ["复核", "Verify"],
-                ["维护", "Maintain"],
-                ["验证", "Review"],
-                ["知识", "Learn"],
-              ].map(([a, b], i) => (
-                <div key={a}>
-                  <small>0{i + 1}</small>
-                  <span>{t(a, b)}</span>
-                  {i < 6 && <ArrowRight size={16} />}
-                </div>
-              ))}
-            </div>
-          </section>
+
         </div>
+        <RuleKnowledge lang={en ? "en" : "zh"} view="details" />
+        <RulesWorkflow lang={en ? "en" : "zh"} />
       </>
     );
   if (page === "applications")
@@ -427,6 +410,7 @@ export default function Secondary({ page, en, href }: Props) {
             );
           })}
         </div>
+        <RuleKnowledge lang={en ? "en" : "zh"} view="example" />
       </>
     );
   if (page === "about")
@@ -440,6 +424,7 @@ export default function Secondary({ page, en, href }: Props) {
             "LinkedTi specializes in industrial condition monitoring, fault diagnostics, and predictive maintenance, providing hardware, software, and technical support for industrial operators, system integrators, and OEMs.",
           )}
         />
+        <RuleKnowledge lang={en ? "en" : "zh"} view="about" />
         <section className="wrap about-story">
           <div className="brand-statement">
             <Mark />
