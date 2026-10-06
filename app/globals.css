@@ -627,6 +627,21 @@ h2 {
 .identity-comparison figcaption { color: #aebfd7; font-size: 14px; line-height: 1.6; margin-top: 14px; }
 .identity-continuity { border-left: 3px solid #438fff; padding-left: 20px; }
 @media (max-width: 640px) { .identity-comparison { grid-template-columns: 1fr; } }
+.japanese-site { font-family: "Noto Sans JP", "Yu Gothic", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif; }
+.japanese-site .hero h1.brand-promise { font-size: clamp(1.4rem, 2.45vw, 2.5rem); }
+.japanese-site .hero-copy > p, .japanese-site .intro-body { line-height: 1.95; }
+.ja-caption { color: #9eb1cd; font-size: 14px; line-height: 1.7; margin-top: 12px; }
+.ja-product-details { display: grid; gap: 48px; }
+.ja-product-details article { padding: 30px 0; border-top: 1px solid var(--line); scroll-margin-top: 130px; }
+.ja-product-details article > p { max-width: 850px; line-height: 1.9; color: #b9c8df; }
+.ja-product-details img { width: 100%; height: auto; margin-top: 24px; }
+.ja-inquiry { display: grid; gap: 18px; min-width: 0; }
+.ja-inquiry > p { color: #b9c8df; line-height: 1.8; }
+.ja-inquiry label { display: grid; gap: 8px; font-size: 16px; }
+.ja-inquiry input, .ja-inquiry textarea { width: 100%; box-sizing: border-box; padding: 12px 14px; color: #eef4ff; background: #0d1a2d; border: 1px solid #476186; border-radius: 6px; font: inherit; }
+.ja-inquiry input:focus-visible, .ja-inquiry textarea:focus-visible { outline: 2px solid #8dbdff; outline-offset: 2px; }
+.ja-mail-draft { display: grid; gap: 14px; }
+@media (max-width: 480px) { .header-inner { flex-wrap: wrap; row-gap: 14px; } .header-actions { margin-left: auto; } .japanese-site .header-cta { font-size: 12px; } }
 .case-feature {
   display: grid;
   grid-template-columns: 180px 1fr 30px;

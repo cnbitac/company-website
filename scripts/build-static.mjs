@@ -18,13 +18,14 @@ const template = readFileSync('out/static.html', 'utf8');
 unlinkSync('out/static.html');
 const escape = s => String(s).replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
 const urls = [];
-for (const lang of ['zh', 'en']) for (const page of ['home', 'products', 'applications', 'about', 'contact', 'brand']) {
-  const route = `${lang === 'en' ? '/en' : ''}${page === 'home' ? '' : '/' + page}` || '/';
+for (const lang of ['zh', 'en', 'ja', 'de', 'ar']) for (const page of ['home', 'products', 'applications', 'about', 'contact', 'brand']) {
+  if (['ja','de','ar'].includes(lang) && page === 'brand') continue;
+  const route = `${lang === 'zh' ? '' : '/' + lang}${page === 'home' ? '' : '/' + page}` || '/';
   const metadata = metadataFor(page, lang);
   const head = `<title>${escape(metadata.title)}</title><meta name="description" content="${escape(metadata.description)}"><meta name="robots" content="${metadata.robots.index ? 'index, follow' : 'noindex, nofollow'}">`;
   const alternates = metadata.alternates;
   const links = alternates ? `<link rel="canonical" href="${sitePublication.origin}${alternates.canonical}">` + Object.entries(alternates.languages).map(([language, path]) => `<link rel="alternate" hreflang="${language}" href="${sitePublication.origin}${path}">`).join('') : '';
-  const html = template.replace('lang="zh-CN"', `lang="${lang === 'en' ? 'en' : 'zh-CN'}"`).replace('<!--metadata-->', head + links).replace('data-page="home" data-lang="zh"', `data-page="${page}" data-lang="${lang}"`).replace('<!--app-->', render(page, lang));
+  const html = template.replace('lang="zh-CN"', `lang="${lang === 'zh' ? 'zh-CN' : lang}" dir="${lang === 'ar' ? 'rtl' : 'ltr'}"`).replace('<!--metadata-->', head + links).replace('data-page="home" data-lang="zh"', `data-page="${page}" data-lang="${lang}"`).replace('<!--app-->', render(page, lang));
   const file = route === '/' ? 'out/index.html' : `out${route}.html`;
   mkdirSync(resolve(file, '..'), { recursive: true });
   writeFileSync(file, html);
@@ -32,4 +33,4 @@ for (const lang of ['zh', 'en']) for (const page of ['home', 'products', 'applic
 }
 writeFileSync('out/robots.txt', sitePublication.allowIndexing ? `User-agent: *\nDisallow: /brand\nDisallow: /en/brand\nSitemap: ${sitePublication.origin}/sitemap.xml\n` : 'User-agent: *\nDisallow: /\n');
 writeFileSync('out/sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + urls.map(url => `<url><loc>${escape(url)}</loc></url>`).join('') + '</urlset>');
-console.log('Exported 12 bilingual pages to out/.');
+console.log('Exported 27 pages in Chinese, English, Japanese, German and Arabic to out/.');

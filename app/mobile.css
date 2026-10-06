@@ -1,0 +1,64 @@
+/* Phone layout is deliberately separate from the desktop composition. */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+@media (max-width: 600px) {
+  .wrap { width: calc(100% - 40px); }
+  .site-header { position: relative; }
+  .site-header .header-inner { height: auto; min-height: 76px; padding: 16px 20px; display: flex; flex-wrap: nowrap; gap: 12px; }
+  .site-header .brand { gap: 9px; flex-shrink: 0; }
+  .site-header .brand-mark { width: 36px; height: 36px; }
+  .site-header .brand-type { font-size: 22px; }
+  .site-header .header-actions { margin: 0; margin-inline-start: auto; gap: 0; }
+  .site-header .header-cta { display: none; }
+  .site-header .language-switcher,.qa-header .language-switcher { font-size: 16px; min-height: 44px; max-width: 120px; padding: 8px; }
+  .site-header .mobile-nav { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0; padding: 0 12px; font-size: 14px; }
+  .mobile-nav a { min-height: 46px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 7px 5px; line-height: 1.5; }
+  .hero.wrap,.international-site .hero.wrap { padding-top: 34px; padding-bottom: 40px; gap: 32px; }
+  .hero h1.brand-promise,.japanese-site .hero h1.brand-promise,.international-site .hero h1.brand-promise { font-size: clamp(26px,7.1vw,34px); line-height: 1.5; letter-spacing: -.025em; margin-block: 20px; overflow-wrap: break-word; }
+  .hero-copy > p,.international-site .hero-copy > p { font-size: 16px; line-height: 1.85; }
+  .eyebrow { font-size: 11px; line-height: 1.7; letter-spacing: .07em; }
+  .actions { display: flex; flex-direction: column; align-items: stretch; gap: 12px; margin-top: 24px; }
+  .actions .button,.actions .text-link { min-height: 48px; justify-content: center; text-align: center; font-size: 15px; padding: 12px 16px; }
+  .hero-notes { flex-wrap: wrap; gap: 9px 0; font-size: 11px; margin-top: 20px; }
+  .hero-notes > span { white-space: normal; }
+  .flow-visual { aspect-ratio: auto; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; padding: 18px; border: 1px solid #294368; border-radius: 14px; background: #0d1b32; }
+  .flow-visual .flow-grid,.flow-visual .orbit,.flow-visual .flow-lines,.flow-visual .flow-core { display: none; }
+  .flow-visual .visual-caption,.flow-visual .visual-foot { position: static; grid-column: 1 / -1; font-size: 10px; line-height: 1.6; letter-spacing: 0; gap: 8px; flex-wrap: wrap; }
+  .flow-visual .visual-caption { order: 0; padding-bottom: 6px; }
+  .flow-visual .flow-node { position: static; transform: none; width: auto; min-width: 0; padding: 14px 10px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .flow-visual .flow-node b { font-size: 17px; }
+  .flow-visual .flow-node span { font-size: 12px; line-height: 1.6; white-space: normal; overflow-wrap: break-word; }
+  .flow-visual .flow-node > svg { width: 22px; height: 22px; }
+  .flow-visual .node-sensor { order: 1; }.flow-visual .node-edge { order: 2; }.flow-visual .node-software { order: 3; }.flow-visual .node-agent { order: 4; }
+  .flow-visual .visual-foot { order: 5; padding-top: 8px; }
+  .section.wrap { padding-block: 48px; }
+  .section-heading { margin-bottom: 24px; }
+  h2,.section-heading h2,.contact-band h2 { font-size: 28px; line-height: 1.4; }
+  .section-heading > p { font-size: 16px; line-height: 1.85; }
+  .product-grid { grid-template-columns: minmax(0,1fr); }
+  .product-grid .product-card { padding: 26px 24px; border-inline: 0; }
+  .product-grid .product-card + .product-card { border-top: 1px solid var(--line); }
+  .product-card h3 { font-size: 28px; }.product-card h4,.international-site .product-card h4 { font-size: 17px; }.product-card p,.international-site .product-card p { font-size: 16px; line-height: 1.8; }
+  .product-top { margin-bottom: 18px; }.micro { font-size: 11px; }
+  .page-intro.wrap { padding-top: 36px; padding-bottom: 24px; }
+  .page-intro h1 { font-size: 30px; line-height: 1.4; overflow-wrap: break-word; }
+  .intro-body { font-size: 16px; line-height: 1.85; }
+  .industry-grid { grid-template-columns: minmax(0,1fr); }.featured-industry { grid-column: auto; }
+  .industry-card { padding: 24px; }.industry-card p,.case-feature p { font-size: 16px; line-height: 1.85; }
+  .contact-band.wrap { display: block; padding: 26px 22px; margin-bottom: 40px; }
+  .contact-band .button { display: flex; width: 100%; min-height: 48px; justify-content: center; margin-top: 24px; white-space: normal; text-align: center; }
+  .footer-top { grid-template-columns: minmax(0,1fr); gap: 22px; }.footer-top > div { text-align: start; }
+  .footer-top p { display: block; font-size: 14px; }.footer-bottom { align-items: flex-start; font-size: 12px; }
+  .intl-workflow { grid-template-columns: repeat(2,minmax(0,1fr)); }.intl-three,.intl-industries { grid-template-columns: minmax(0,1fr); }
+  .intl-visual { padding: 18px; }.intl-node { gap: 12px; padding: 14px; }.intl-node span { font-size: 14px; }.intl-story p { font-size: 16px; }
+  .qa-header { padding: 16px 20px; gap: 12px; }.qa-header .brand-type { font-size: 22px; }.qa-header .brand-mark { width: 36px; height: 36px; }
+  .qa-header > .qa-back { width: 100%; min-height: 36px; font-size: 14px; }
+  .qa-layout { padding: 26px 16px; }.qa-intro h1 { font-size: 28px; line-height: 1.5; }
+  .qa-steps { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 5px; }.qa-steps li { min-width: 0; font-size: 11px; line-height: 1.5; text-align: center; }
+  .qa-surface { padding: 24px 18px; }.qa-question label { font-size: 16px; line-height: 1.65; }.qa-question > p,.qa-muted { font-size: 14px; line-height: 1.7; }
+  .qa-surface select,.qa-surface input { font-size: 16px; }
+  .qa-contact-fields { grid-template-columns: minmax(0,1fr); }.qa-contact-fields label { font-size: 14px; }
+  .qa-controls { gap: 12px; }.qa-controls .button { padding: 12px 14px; }.qa-back { min-height: 44px; }
+  .qa-consent,.qa-explain,.qa-result p { font-size: 14px; line-height: 1.8; }
+  .qa-selected-answer { margin-top: 10px; color: #c6d8ef; font-size: 14px; line-height: 1.7; }
+}
+@media (min-width: 601px) { .qa-selected-answer { display: none; } }
